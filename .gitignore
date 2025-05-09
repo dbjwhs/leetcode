@@ -1,32 +1,37 @@
-# Prerequisites
-*.d
+# OSX
+.DS_Store
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# Build directories
+**/build/
+**/out/
+**/cmake-build-*/
 
-# Precompiled Headers
-*.gch
-*.pch
+# CMake generated files
+**/CMakeCache.txt
+**/CMakeFiles/
+**/cmake_install.cmake
+**/Makefile
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# Compiled files
+**/*.o
+**/*.obj
+**/*.exe
+**/*.dll
+**/*.so
+**/*.dylib
 
-# Fortran module files
-*.mod
-*.smod
+# IDE specific files
+**/.vscode/
+**/.idea/
+**/*.swp
+**/.DS_Store
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+# Binary outputs (assuming each project might have different names)
+**/bin/
+**/lib/
 
-# Executables
-*.exe
-*.out
-*.app
+# Generated files
+**/*.generated.*
+**/compile_commands.json
+**/custom.log
+
