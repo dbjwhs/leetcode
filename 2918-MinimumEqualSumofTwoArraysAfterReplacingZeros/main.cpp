@@ -7,35 +7,35 @@ class Solution {
 public:
     long long minSum(std::vector<int>& nums1, std::vector<int>& nums2) {
         long long sumNum1 = 0, sumNum2 = 0;
-        int numZero1 = 0, numZero2 = 0;
+        int sumZero1 = 0, sumZero2 = 0;
 
         // sums and number of zeros in each array
-        numZerosNumSum(nums1, sumNum1, numZero1);
-        numZerosNumSum(nums2, sumNum2, numZero2);
+        numZerosNumSum(nums1, sumNum1, sumZero1);
+        numZerosNumSum(nums2, sumNum2, sumZero2);
 
         // check if sums already be equal
-        if (numZero1 == 0 && numZero2 == 0) {
+        if (sumZero1 == 0 && sumZero2 == 0) {
             return (sumNum1 == sumNum2) ? sumNum1 : -1;
         }
 
         // nums1 has no zeros
-        if (numZero1 == 0) {
-            return (sumNum1 >= sumNum2 + numZero2) ? sumNum1 : -1;
+        if (sumZero1 == 0) {
+            return (sumNum1 >= sumNum2 + sumZero2) ? sumNum1 : -1;
         }
 
         // nums2 has no zeros
-        if (numZero2 == 0) {
-            return (sumNum2 >= sumNum1 + numZero1) ? sumNum2 : -1;
+        if (sumZero2 == 0) {
+            return (sumNum2 >= sumNum1 + sumZero1) ? sumNum2 : -1;
         }
 
         // both arrays have zeros
-        return std::max(sumNum1 + numZero1, sumNum2 + numZero2);
+        return std::max(sumNum1 + sumZero1, sumNum2 + sumZero2);
     }
 
-    void numZerosNumSum(const std::vector<int>& nums, long long& sum1, int& zeros1) {
+    void numZerosNumSum(const std::vector<int>& nums, long long& sum, int& zeros) {
         for (const int num : nums) {
-            sum1 += num;
-            zeros1 += (num == 0);
+            sum += num;
+            zeros += (num == 0);
         }
     }
 };
@@ -115,7 +115,7 @@ void runTests() {
     {
         std::vector<int> nums1 = {9999999, 0, 0};
         std::vector<int> nums2 = {999991, 0};
-        long long expected = 1000002;
+        long long expected = 10000001;
         long long result = solution.minSum(nums1, nums2);
         assert(result == expected && "Large numbers test failed");
         std::cout << "Large numbers test passed: " << result << std::endl;
