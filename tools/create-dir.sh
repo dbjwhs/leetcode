@@ -7,9 +7,13 @@ if [ $# -eq 0 ]; then
 fi
 
 # Take input, replace dots with hyphens and remove spaces
-DIR_NAME=$(echo "$1" | tr '.' '-' | tr -d ' ')
+DIR_PATH="../$(echo "$1" | tr '.' '-' | tr -d ' ')"
 
 # Create the directory
-mkdir -p "$DIR_NAME"
+mkdir -p "$DIR_PATH"
 
-echo "Directory created: $DIR_NAME"
+# Copy template files
+cp main.cpp $DIR_PATH
+cp CMakeLists.txt $DIR_PATH
+
+echo "Directory: $DIR_NAME created and initialized"
