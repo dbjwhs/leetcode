@@ -16,4 +16,7 @@ mkdir -p "$DIR_PATH"
 cp main.cpp $DIR_PATH
 cp CMakeLists.txt $DIR_PATH
 
-echo "Directory: $DIR_NAME created and initialized"
+# Copy to clipboard to quick access
+echo $DIR_PATH | pbcopy
+
+echo "Directory: $DIR_PATH created and initialized"
