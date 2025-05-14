@@ -13,8 +13,8 @@ public:
         int trim_mod = 1e9 + 7;
 
         // init main vector with initial string
-        int alpahbet_size = 26;
-        vector<long long> str_vec_accum(alpahbet_size, 0);
+        int alphabet_size = 26;
+        vector<long long> str_vec_accum(alphabet_size, 0);
         for (auto ch : s) {
             int ch_idx = ch - 'a';
             str_vec_accum[ch_idx]++;
@@ -22,15 +22,15 @@ public:
 
         // iterate transformations
         while (t--) {
-            vector<long long> str_vec_trans(alpahbet_size, 0);
-            int alpahbet_ndx_z = alpahbet_size - 1;
-            for (int ndx = 0; ndx < alpahbet_ndx_z; ndx++) {
+            vector<long long> str_vec_trans(alphabet_size, 0);
+            int alphabet_ndx_z = alphabet_size - 1;
+            for (int ndx = 0; ndx < alphabet_ndx_z; ndx++) {
                 str_vec_trans[ndx + 1] = (str_vec_trans[ndx + 1] + str_vec_accum[ndx]) % trim_mod;
             }
 
             // handle 'z' case roll over to "ab"
-            str_vec_trans[0] = (str_vec_trans[0] + str_vec_accum[alpahbet_ndx_z]) % trim_mod;
-            str_vec_trans[1] = (str_vec_trans[1] + str_vec_accum[alpahbet_ndx_z]) % trim_mod;
+            str_vec_trans[0] = (str_vec_trans[0] + str_vec_accum[alphabet_ndx_z]) % trim_mod;
+            str_vec_trans[1] = (str_vec_trans[1] + str_vec_accum[alphabet_ndx_z]) % trim_mod;
 
             // init for new transformation
             str_vec_accum = str_vec_trans;
@@ -38,7 +38,7 @@ public:
 
         // generate count and return
         int cnt = 0;
-        for (int i = 0; i < alpahbet_size; i++) {
+        for (int i = 0; i < alphabet_size; i++) {
             cnt = (cnt + str_vec_accum[i]) % trim_mod;
         }
         return cnt;
