@@ -11,6 +11,7 @@ public:
     int lengthAfterTransformations(string s, int t) {
         // prevent overflow
         int trim_mod = 1e9 + 7;
+
         // init main vector with initial string
         int alpahbet_size = 26;
         vector<long long> str_vec_accum(alpahbet_size, 0);
@@ -34,6 +35,7 @@ public:
             // init for new transformation
             str_vec_accum = str_vec_trans;
         }
+
         // generate count and return
         int cnt = 0;
         for (int i = 0; i < alpahbet_size; i++) {
