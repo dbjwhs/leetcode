@@ -10,7 +10,6 @@ class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         vector<char> vec;
-
         int subCnt = 0, longestSubCnt = 0;
         for (auto c : s) {
             auto it = find(vec.begin(), vec.end(), c);
@@ -59,14 +58,14 @@ void runTests() {
     }
     {
         int result = solution.lengthOfLongestSubstring("abcdefghidxapl890px3");
-        assert(result == 3 && "Test 5 failed");
+        assert(result == 13 && "Test 5 failed");
         std::cout << "Test 5 passed: " << result << std::endl;
     }
-    // {
-    //     int result = solution.lengthOfLongestSubstring("dvdf");
-    //     assert(result == 3 && "Test 5 failed");
-    //     std::cout << "Test 5 passed: " << result << std::endl;
-    // }
+    {
+        int result = solution.lengthOfLongestSubstring("dvdf");
+        assert(result == 3 && "Test 6 failed");
+        std::cout << "Test 6 passed: " << result << std::endl;
+    }
 }
 
 int main() {
