@@ -16,15 +16,8 @@ void runTests() {
     {
 
         bool result = solution.
-        assert(result == false && "Test 2 failed");
+        assert(result == false && "Test 1 failed");
         std::cout << "Test 1 passed: " << result << std::endl;
-    }
-
-    {
-
-        bool result = solution.
-        assert(result == false && "Test 2 failed");
-        std::cout << "Test 2 passed: " << result << std::endl;
     }
 }
 
