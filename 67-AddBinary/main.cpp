@@ -28,28 +28,26 @@ using namespace std;
 class Solution {
 public:
     string addBinary(string a, string b) {
-        string result{};
+        string result;
         int strLen = stringPrep(a, b);
         bool carry = false;
         for (int ndx = 0; ndx < strLen; ndx++) {
-            char nextCharA = ndx < a.size() ? a[ndx] : '0';
-            char nextCharB = ndx < b.size() ? b[ndx] : '0';
-            if (nextCharA == '1' && nextCharB == '1') {
+            char nextCharA = nextChar(a, ndx);
+            char nextCharB = nextChar(b, ndx);
+            if (nextCharA == '1' and nextCharB == '1') {
                 if (carry == true) {
                     result += "1";
                 } else {
                     result += "0";
                     carry = true;
                 }
-            }
-            else if (nextCharA == '1' || nextCharB == '1') {
+            } else if (nextCharA == '1' or nextCharB == '1') {
                 if (carry == true) {
                     result += "0";
                 } else {
                     result += "1";
                 }
-            }
-            else {
+            } else {
                 if (carry == true) {
                     result += "1";
                 } else {
@@ -63,6 +61,10 @@ public:
         }
         reverse(result.begin(), result.end());
         return result;
+    }
+
+    char nextChar(const string &str, const int ndx) {
+        return ndx < str.size() ? str[ndx] : '0';
     }
 
     int stringPrep(string& a, string& b) {
