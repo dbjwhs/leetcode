@@ -12,9 +12,8 @@ public:
         vector<char> vec;
         int subCnt = 0, longestSubCnt = 0;
         for (auto c : s) {
-            auto it = find(vec.begin(), vec.end(), c);
-            if (it != vec.end()) {
-                int vecDis = distance(vec.begin(), it);
+            if (auto it = ranges::find(vec, c); it != vec.end()) {
+                const int vecDis = distance(vec.begin(), it);
                 vec.erase(vec.begin(), vec.begin() + vecDis + 1);
                 subCnt -= vecDis + 1;
             }
