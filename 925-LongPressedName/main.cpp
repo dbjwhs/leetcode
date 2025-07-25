@@ -7,23 +7,33 @@ using namespace std;
 
 class Solution {
 public:
-    bool isLongPressedName(string name, string typed) {
-        bool result = true;
-        int tdx = 0;
-        for (int ndx = 0; ndx < name.length(); ++ndx) {
-            if (name[ndx] != typed[tdx]) {
-                result = false;
-                break;
+    bool isLongPressedName(const std::string& name, const std::string& typed) {
+        int nameDex = 0;
+        int typedDex = 0;
+
+        while (nameDex < name.length() && typedDex < typed.length()) {
+            if (name[nameDex] != typed[typedDex]) {
+                return false;
             }
-            ++tdx;
-            if (ndx < name.length() - 1 && name[ndx + 1] == typed[tdx]) {
-                continue;
+
+            char currentChar = name[nameDex];
+            int nameCount = 0;
+            int typedCount = 0;
+            while (nameDex < name.length() && name[nameDex] == currentChar) {
+                nameCount++;
+                nameDex++;
             }
-            while (name[ndx] == typed[tdx]) {
-                ++tdx;
+
+            while (typedDex < typed.length() && typed[typedDex] == currentChar) {
+                typedCount++;
+                typedDex++;
+            }
+
+            if (typedCount < nameCount) {
+                return false;
             }
         }
-        return result;
+        return nameDex == name.length() && typedDex == typed.length();
     }
 };
 
